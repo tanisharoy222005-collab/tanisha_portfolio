@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Tanisha Roy | Full Stack Developer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ==========================================
+   RESET
+========================================== */
+:root{
+--accent:#8EC3D5;
+--accent-light:#A8D1DF;
+--accent-dark:#6FAFC4;
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#0b0b0b;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+
+background:
+radial-gradient(circle at center,
+rgba(255,255,255,.03) 1px,
+transparent 1px);
+
+background-size:4px 4px;
+
+pointer-events:none;
+opacity:.7;
+z-index:-2;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+
+background:
+radial-gradient(
+circle at top center,
+rgba(255,255,255,.06),
+transparent 55%
+);
+
+z-index:-1;
+pointer-events:none;
+}
+
+/* ==========================================
+   NAVBAR
+========================================== */
+
+nav{
+position:fixed;
+top:28px;
+left:50%;
+transform:translateX(-50%);
+
+width:min(920px,90%);
+height:82px;
+
+background:#000;
+
+border-radius:999px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:0 16px;
+
+z-index:1000;
+
+transition:
+width .4s ease,
+height .4s ease,
+padding .4s ease;
+}
+
+.nav-left{
+display:flex;
+align-items:center;
+gap:16px;
+}
+
+.nav-avatar{
+width:54px;
+height:54px;
+border-radius:50%;
+overflow:hidden;
+flex-shrink:0;
+}
+
+.nav-avatar img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.nav-links{
+display:flex;
+align-items:center;
+gap:42px;
+list-style:none;
+}
+
+.nav-links a{
+text-decoration:none;
+color:#fff;
+font-size:16px;
+font-weight:500;
+transition:.3s;
+}
+
+.nav-links a:hover{
+opacity:.7;
+}
+
+.nav-btn{
+height:56px;
+padding:0 34px;
+
+background:#fff;
+color:#000;
+
+border-radius:999px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-weight:600;
+text-decoration:none;
+}
+
+/* ==========================================
+   SCROLLED NAVBAR
+========================================== */
+
+.status-pill{
+display:none;
+align-items:center;
+gap:12px;
+font-size:16px;
+font-weight:500;
+}
+
+.status-dot{
+width:10px;
+height:10px;
+border-radius:50%;
+background:#2dd36f;
+}
+
+nav.compact{
+width:340px;
+height:66px;
+justify-content:center;
+gap:16px;
+}
+
+nav.compact .nav-links,
+nav.compact .nav-btn{
+display:none;
+}
+
+nav.compact .status-pill{
+display:flex;
+}
+
+/* ==========================================
+   HERO
+========================================== */
+
+.hero{
+min-height:100vh;
+
+display:grid;
+grid-template-columns:1.1fr .9fr;
+
+align-items:center;
+
+padding:
+140px
+8%
+80px;
+
+gap:80px;
+}
+
+.hero-subtitle{
+display:inline-flex;
+align-items:center;
+gap:10px;
+
+padding:12px 18px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:999px;
+
+margin-bottom:24px;
+}
+
+.hero-subtitle span{
+width:10px;
+height:10px;
+border-radius:50%;
+background:#2dd36f;
+}
+
+.hero h1{
+font-size:clamp(54px,8vw,110px);
+line-height:.95;
+font-weight:800;
+letter-spacing:-4px;
+margin-bottom:24px;
+}
+
+.hero h2{
+font-size:28px;
+font-weight:500;
+color:#d1d5db;
+margin-bottom:26px;
+}
+
+.hero p{
+max-width:650px;
+
+font-size:18px;
+line-height:1.8;
+
+color:#b6bcc6;
+}
+
+.hero-actions{
+display:flex;
+gap:18px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+.btn-primary{
+background:#fff;
+color:#000;
+padding:18px 32px;
+border-radius:999px;
+text-decoration:none;
+font-weight:600;
+}
+
+.btn-secondary{
+background:transparent;
+border:1px solid rgba(255,255,255,.15);
+
+padding:18px 32px;
+
+border-radius:999px;
+text-decoration:none;
+color:#fff;
+}
+
+/* ==========================================
+   IMAGE CARD
+========================================== */
+
+.hero-image{
+position:relative;
+}
+
+.image-card{
+
+background:#121212;
+
+border-radius:38px;
+
+padding:18px;
+
+border:1px solid rgba(255,255,255,.08);
+
+overflow:hidden;
+}
+
+.image-card img{
+width:100%;
+display:block;
+border-radius:28px;
+object-fit:cover;
+}
+
+.image-tag{
+position:absolute;
+bottom:30px;
+left:30px;
+
+background:#fff;
+color:#000;
+
+padding:14px 18px;
+
+border-radius:999px;
+
+font-size:14px;
+font-weight:600;
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:1000px){
+
+.hero{
+grid-template-columns:1fr;
+padding-top:160px;
+}
+
+.hero-image{
+order:-1;
+}
+
+.nav-links{
+display:none;
+}
+
+.nav-btn{
+display:none;
+}
+
+}
+/* =====================================
+   SECTIONS
+===================================== */
+
+.section{
+padding:120px 8%;
+}
+
+.section-heading{
+max-width:900px;
+margin-bottom:60px;
+}
+
+.section-tag{
+display:inline-block;
+padding:10px 18px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:999px;
+margin-bottom:24px;
+font-size:14px;
+}
+
+.section-heading h2{
+font-size:clamp(42px,6vw,72px);
+line-height:1;
+margin-bottom:20px;
+font-weight:800;
+letter-spacing:-2px;
+}
+
+.section-heading p{
+font-size:18px;
+line-height:1.8;
+color:#b6bcc6;
+}
+
+/* =====================================
+   ABOUT
+===================================== */
+
+.about-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:24px;
+}
+
+.about-card{
+background:#121212;
+border:1px solid rgba(255,255,255,.08);
+padding:32px;
+border-radius:32px;
+transition:.4s ease;
+}
+
+.about-card h3{
+font-size:22px;
+margin-bottom:24px;
+}
+
+.about-card ul{
+list-style:none;
+}
+
+.about-card li{
+padding:10px 0;
+color:#c7ccd3;
+border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.about-card li:last-child{
+border-bottom:none;
+}
+
+/* =====================================
+   STATS
+===================================== */
+
+.stats-section{
+padding:0 8% 120px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:24px;
+}
+
+.stat-card{
+background:#121212;
+padding:40px;
+border-radius:32px;
+border:1px solid rgba(255,255,255,.08);
+text-align:center;
+transition:.4s ease;
+}
+
+.stat-card h3{
+font-size:58px;
+font-weight:800;
+margin-bottom:10px;
+}
+
+.stat-card p{
+color:#9ca3af;
+}
+
+/* =====================================
+   SKILLS
+===================================== */
+
+.skills-grid{
+display:flex;
+flex-wrap:wrap;
+gap:16px;
+}
+
+.skills-grid span{
+padding:14px 22px;
+background:#121212;
+border:1px solid rgba(255,255,255,.08);
+border-radius:999px;
+font-weight:500;
+transition:.3s ease;
+}
+
+.skills-grid span:hover{
+background:#fff;
+color:#000;
+}
+
+/* =====================================
+   PROJECTS
+===================================== */
+
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:24px;
+}
+
+.project-card{
+background:#121212;
+border:1px solid rgba(255,255,255,.08);
+padding:34px;
+border-radius:32px;
+transition:.4s ease;
+cursor:pointer;
+}
+
+.project-card h3{
+font-size:24px;
+margin-bottom:14px;
+}
+
+.project-card p{
+color:#b6bcc6;
+line-height:1.8;
+}
+
+.project-card:hover{
+transform:translateY(-10px);
+border-color:rgba(255,255,255,.18);
+}
+.project-card a{
+display:inline-flex;
+align-items:center;
+gap:8px;
+
+margin-top:20px;
+
+color:var(--accent);
+
+font-weight:600;
+
+text-decoration:none;
+
+transition:.3s;
+}
+
+.project-card a:hover{
+transform:translateX(5px);
+}
+/* =====================================
+   CONTACT
+===================================== */
+
+.contact-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:24px;
+margin-top:40px;
+}
+
+.contact-card{
+background:#121212;
+border:1px solid rgba(255,255,255,.08);
+padding:34px;
+border-radius:32px;
+transition:.4s ease;
+}
+
+.contact-card h3{
+margin-bottom:12px;
+}
+
+.contact-card a{
+color:#fff;
+text-decoration:none;
+opacity:.8;
+}
+
+.contact-card a:hover{
+opacity:1;
+}
+
+.contact-card:hover{
+transform:translateY(-10px);
+border-color:rgba(255,255,255,.18);
+}
+
+.contact-cta{
+margin-top:50px;
+}
+.contact-container{
+display:grid;
+grid-template-columns:1fr 1.2fr;
+gap:60px;
+margin-top:50px;
+}
+
+.contact-info{
+display:flex;
+flex-direction:column;
+gap:24px;
+}
+
+.contact-status{
+display:inline-flex;
+align-items:center;
+gap:10px;
+
+padding:12px 18px;
+
+background:rgba(142,195,213,.12);
+
+border:1px solid rgba(142,195,213,.2);
+
+border-radius:999px;
+
+color:var(--accent);
+font-weight:600;
+width:fit-content;
+}
+
+.contact-info h3{
+font-size:42px;
+margin-top:10px;
+}
+
+.contact-info p{
+line-height:1.8;
+color:#b6bcc6;
+}
+
+.contact-details{
+display:flex;
+flex-direction:column;
+gap:24px;
+margin-top:10px;
+}
+
+.info-item span{
+display:block;
+font-weight:700;
+margin-bottom:8px;
+color:white;
+}
+
+.info-item a{
+color:var(--accent);
+text-decoration:none;
+}
+
+.info-item a:hover{
+opacity:.8;
+}
+
+@media(max-width:900px){
+
+.contact-container{
+grid-template-columns:1fr;
+gap:40px;
+}
+
+}
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer{
+padding:120px 8% 60px;
+border-top:1px solid rgba(255,255,255,.08);
+}
+
+.footer-content{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.footer-content h2{
+font-size:46px;
+font-weight:800;
+}
+
+.footer-content p{
+color:#9ca3af;
+}
+
+.footer-links{
+display:flex;
+gap:24px;
+flex-wrap:wrap;
+}
+
+.footer-links a{
+color:#fff;
+text-decoration:none;
+opacity:.8;
+}
+
+.footer-links a:hover{
+opacity:1;
+}
+.footer-note{
+margin-top:50px;
+padding-top:25px;
+border-top:1px solid rgba(255,255,255,.08);
+
+text-align:center;
+
+color:#9ca3af;
+
+font-size:14px;
+
+letter-spacing:.5px;
+}
+/* =====================================
+   REVEAL ANIMATIONS
+===================================== */
+
+.hidden-reveal{
+opacity:0;
+transform:translateY(60px);
+transition:
+opacity .8s ease,
+transform .8s ease;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* =====================================
+   HOVER EFFECTS
+===================================== */
+
+.about-card:hover,
+.stat-card:hover{
+transform:translateY(-10px);
+border-color:rgba(255,255,255,.18);
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:1000px){
+
+.stats-section{
+grid-template-columns:1fr 1fr;
+}
+
+.timeline-item{
+grid-template-columns:1fr;
+gap:20px;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:64px;
+}
+
+.hero h2{
+font-size:22px;
+}
+
+.section{
+padding:90px 6%;
+}
+
+.stats-section{
+grid-template-columns:1fr;
+padding:0 6% 90px;
+}
+
+.projects-grid{
+grid-template-columns:1fr;
+}
+
+.contact-grid{
+grid-template-columns:1fr;
+}
+
+.footer-content{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.section-heading h2{
+font-size:48px;
+}
+
+}
+.contact-form-wrapper{
+max-width:800px;
+margin-top:50px;
+}
+
+.contact-form{
+display:flex;
+flex-direction:column;
+gap:24px;
+}
+
+.form-group{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.form-group label{
+font-weight:600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+
+background:#121212;
+border:1px solid rgba(255,255,255,.08);
+
+padding:18px 20px;
+
+border-radius:18px;
+
+color:white;
+
+font-size:16px;
+
+outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+border-color:white;
+}
+
+.submit-btn{
+
+background:white;
+color:black;
+
+height:58px;
+
+border:none;
+
+border-radius:999px;
+
+font-weight:700;
+font-size:16px;
+
+cursor:pointer;
+
+transition:.3s;
+}
+
+.submit-btn:hover{
+transform:translateY(-2px);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================
+     NAVBAR
+===================================== -->
+
+<nav id="navbar">
+
+<div class="nav-left">
+
+<div class="nav-avatar">
+
+<!-- REPLACE WITH YOUR IMAGE -->
+<img src="profile.png" alt="Profile">
+
+</div>
+
+<div class="status-pill">
+Available for work
+<div class="status-dot"></div>
+</div>
+
+</div>
+
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<a href="#contact" class="nav-btn">
+Let's Talk
+</a>
+
+</nav>
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<section class="hero">
+
+<div>
+
+<div class="hero-subtitle">
+<span></span>
+Available for Full-Time Opportunities
+</div>
+
+<h1>
+Tanisha<br>
+Roy
+</h1>
+
+<h2>
+Full Stack Developer • 3+ Years Experience
+</h2>
+
+<p>
+Building modern React, Next.js and Node.js applications
+for hospitality, booking, SaaS and business platforms.
+
+Specialised in responsive user interfaces,
+REST APIs, database architecture,
+performance optimisation and production deployments.
+</p>
+
+<div class="hero-actions">
+
+<a href="#projects" class="btn-primary">
+View Projects
+</a>
+
+<a href="#contact" class="btn-secondary">
+Contact Me
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<div class="image-card">
+
+<!-- REPLACE WITH YOUR IMAGE -->
+<img src="profile.png" alt="Tanisha Roy">
+
+</div>
+
+<div class="image-tag">
+3+ Years Experience
+</div>
+
+</div>
+
+</section>
+<!-- =====================================
+     ABOUT
+===================================== -->
+
+<section id="about" class="section">
+
+<div class="section-heading">
+<div class="section-tag">About Me</div>
+
+<h2>
+Building Digital Products That Scale
+</h2>
+
+<p>
+Full Stack Developer with 3+ years of experience creating
+modern web applications using React, Next.js, TypeScript,
+Node.js and PostgreSQL.
+
+Over the last few years I've worked extensively on
+hospitality platforms, booking systems, guest management
+solutions and custom business websites.
+</p>
+</div>
+
+<div class="about-grid">
+
+<div class="about-card">
+<h3>Frontend</h3>
+
+<ul>
+<li>ReactJS</li>
+<li>Next.js</li>
+<li>TypeScript</li>
+<li>Tailwind CSS</li>
+<li>Redux Toolkit</li>
+<li>Framer Motion</li>
+</ul>
+</div>
+
+<div class="about-card">
+<h3>Backend</h3>
+
+<ul>
+<li>Node.js</li>
+<li>Express</li>
+<li>REST APIs</li>
+<li>MongoDB</li>
+<li>PostgreSQL</li>
+<li>Prisma ORM</li>
+</ul>
+</div>
+
+<div class="about-card">
+<h3>Tools</h3>
+
+<ul>
+<li>Git & GitHub</li>
+<li>Figma</li>
+<li>Docker</li>
+<li>Vercel</li>
+<li>AWS</li>
+<li>Cloudinary</li>
+</ul>
+</div>
+
+</div>
+
+</section>
+
+<!-- =====================================
+     STATS
+===================================== -->
+
+<section class="stats-section">
+
+<div class="stat-card">
+<h3>3+</h3>
+<p>Years Experience</p>
+</div>
+
+<div class="stat-card">
+<h3>12+</h3>
+<p>Hospitality Projects</p>
+</div>
+
+<div class="stat-card">
+<h3>20+</h3>
+<p>Production Deployments</p>
+</div>
+
+<div class="stat-card">
+<h3>100%</h3>
+<p>Client Satisfaction</p>
+</div>
+
+</section>
+
+<!-- =====================================
+     SKILLS
+===================================== -->
+
+<section class="section">
+
+<div class="section-heading">
+
+<div class="section-tag">
+Technical Skills
+</div>
+
+<h2>
+Technologies I Work With
+</h2>
+
+</div>
+
+<div class="skills-grid">
+
+<span>ReactJS</span>
+<span>Next.js</span>
+<span>JavaScript</span>
+<span>TypeScript</span>
+<span>HTML5</span>
+<span>CSS3</span>
+<span>Tailwind CSS</span>
+<span>Redux Toolkit</span>
+<span>Node.js</span>
+<span>Express</span>
+<span>REST APIs</span>
+<span>MongoDB</span>
+<span>PostgreSQL</span>
+<span>Prisma</span>
+<span>Git</span>
+<span>GitHub</span>
+<span>Framer Motion</span>
+<span>Figma</span>
+
+</div>
+
+</section>
+
+<!-- =====================================
+     PROJECTS
+===================================== -->
+
+<section id="projects" class="section">
+
+<div class="section-heading">
+
+<div class="section-tag">
+Portfolio
+</div>
+
+<h2>
+12 Hospitality Websites
+</h2>
+
+<p>
+Bespoke websites built for hotels, homestays, cottages,
+guest houses and resorts across North-East India.
+Each project includes custom booking flows,
+SEO optimization, galleries and admin management tools.
+</p>
+
+</div>
+
+<div class="projects-grid">
+
+<div class="project-card">
+<div class="project-number">01</div>
+<h3>Tranquila Cottage</h3>
+<h4>Cottage Retreat</h4>
+<p>Serene cottage nestled in the hills of Sikkim. Custom booking calendar, gallery slider, local experiences section and WhatsApp inquiry integration.</p>
+<div class="tech-stack">
+<span>Next.js</span>
+<span>Tailwind</span>
+<span>MongoDB</span>
+<span>Cloudinary</span>
+</div>
+<a href="https://vercel.com/tanisharoy222005-collabs-projects" target="_blank">View Site ↗</a>
+</div>
+
+<div class="project-card">
+<div class="project-number">02</div>
+<h3>Ronglyang Lotus Homestay</h3>
+<h4>Homestay</h4>
+<p>Traditional homestay portal showcasing cultural experiences, seasonal pricing, testimonials and integrated maps.</p>
+<div class="tech-stack">
+<span>React</span>
+<span>Node.js</span>
+<span>PostgreSQL</span>
+<span>Mapbox</span>
+</div>
+<a href="https://vercel.com/tanisharoy222005-collabs-projects" target="_blank">View Site ↗</a>
+</div>
+
+<div class="project-card">
+<div class="project-number">03</div>
+<h3>Anu Guest House</h3>
+<h4>Guest House</h4>
+<p>Guest house website featuring availability management, reservation system, tariff tables and photo gallery.</p>
+<div class="tech-stack">
+<span>Next.js</span>
+<span>Prisma</span>
+<span>SQLite</span>
+<span>Nodemailer</span>
+</div>
+<a href="https://vercel.com/tanisharoy222005-collabs-projects" target="_blank">View Site ↗</a>
+</div>
+
+<div class="project-card">
+<div class="project-number">04</div>
+<h3>Hotel Yonade</h3>
+<h4>Boutique Hotel</h4>
+<p>Modern hospitality website with loyalty program integration, multilingual support and room showcase.</p>
+<div class="tech-stack">
+<span>Next.js</span>
+<span>Stripe</span>
+<span>PostgreSQL</span>
+<span>i18n</span>
+</div>
+<a href="https://vercel.com/tanisharoy222005-collabs-projects" target="_blank">View Site ↗</a>
+</div>
+
+<div class="project-card">
+<div class="project-number">05</div>
+<h3>PK Girls Hostel</h3>
+<h4>Hostel Portal</h4>
+<p>Student accommodation platform with online admission, room allocation and fee management workflows.</p>
+<div class="tech-stack">
+<span>Next.js</span>
+<span>Prisma</span>
+<span>Razorpay</span>
+<span>Redis</span>
+</div>
+<a href="https://vercel.com/tanisharoy222005-collabs-projects" target="_blank">View Site ↗</a>
+</div>
+
+<div class="project-card">
+<div class="project-number">06</div>
+<h3>Misty Pines Resort</h3>
+<h4>Resort</h4>
+<p>Luxury resort platform featuring event bookings, blog CMS and immersive visual experiences.</p>
+<div class="tech-stack">
+<span>Next.js</span>
+<span>Sanity CMS</span>
+<span>Framer Motion</span>
+</div>
+<a href="https://vercel.com/tanisharoy222005-collabs-projects" target="_blank">View Site ↗</a>
+</div>
+
+<div class="project-card">
+<div class="project-number">07</div>
+<h3>Yak & Yeti Lodge</h3>
+<h4>Mountain Lodge</h4>
+<p>Trekking lodge website with adventure packages, route guides and emergency contact integrations.</p>
+<div class="tech-stack">
+<span>React</span>
+<span>Node.js</span>
+<span>MongoDB</span>
+<span>Leaflet</span>
+</div>
+<a href="https://vercel.com/tanisharoy222005-collabs-projects" target="_blank">View Site ↗</a>
+</div>
+
+<div class="project-card">
+<div class="project-number">08</div>
+<h3>Khangchendzonga View Inn</h3>
+<h4>Inn</h4>
+<p>Property website focused on direct bookings, seasonal offers and immersive image galleries.</p>
+<div class="tech-stack">
+<span>Next.js</span>
+<span>Tailwind</span>
+<span>Cloudflare R2</span>
+</div>
+<a href="https://vercel.com/tanisharoy222005-collabs-projects" target="_blank">View Site ↗</a>
+</div>
+
+<div class="project-card">
+<div class="project-number">09</div>
+<h3>Teesta Riverside Camps</h3>
+<h4>Camping</h4>
+<p>Adventure tourism booking platform with activity scheduling and real-time availability tracking.</p>
+<div class="tech-stack">
+<span>React</span>
+<span>Express</span>
+<span>MongoDB</span>
+<span>DocuSeal</span>
+</div>
+<a href="https://vercel.com/tanisharoy222005-collabs-projects" target="_blank">View Site ↗</a>
+</div>
+
+<div class="project-card">
+<div class="project-number">10</div>
+<h3>Orchid Boutique Homestay</h3>
+<h4>Homestay</h4>
+<p>Premium accommodation portal offering curated experiences and review aggregation.</p>
+<div class="tech-stack">
+<span>Next.js</span>
+<span>GraphQL</span>
+<span>PostgreSQL</span>
+</div>
+<a href="https://vercel.com/tanisharoy222005-collabs-projects" target="_blank">View Site ↗</a>
+</div>
+
+<div class="project-card">
+<div class="project-number">11</div>
+<h3>Darjeeling Heritage Bungalow</h3>
+<h4>Heritage Property</h4>
+<p>Storytelling-focused heritage property website with tea-estate tours and vintage aesthetics.</p>
+<div class="tech-stack">
+<span>Next.js</span>
+<span>Sanity</span>
+<span>GSAP</span>
+</div>
+<a href="https://vercel.com/tanisharoy222005-collabs-projects" target="_blank">View Site ↗</a>
+</div>
+
+<div class="project-card">
+<div class="project-number">12</div>
+<h3>Sikkim Eco Retreat</h3>
+<h4>Eco Resort</h4>
+<p>Sustainability-focused eco resort website featuring analytics dashboards and community engagement.</p>
+<div class="tech-stack">
+<span>Next.js</span>
+<span>D3.js</span>
+<span>MongoDB</span>
+<span>Cloudinary</span>
+</div>
+<a href="https://vercel.com/tanisharoy222005-collabs-projects" target="_blank">View Site ↗</a>
+</div>
+
+</div>
+
+</section>
+<!-- =====================================
+     CONTACT
+===================================== -->
+
+<section id="contact" class="section">
+
+<div class="section-heading">
+
+<div class="section-tag">
+Contact
+</div>
+
+<h2>
+Let's Build Something Impactful Together
+</h2>
+
+<p>
+Whether you're launching a startup, building a business website,
+creating a hospitality platform, or scaling an existing product,
+I'd love to help bring your vision to life.
+</p>
+
+</div>
+
+<div class="contact-container">
+
+<!-- LEFT SIDE -->
+
+<div class="contact-info">
+
+<div class="contact-status">
+🟢 Available for Freelance & Full-Time Opportunities
+</div>
+
+<h3>
+Let's Talk
+</h3>
+
+<p>
+I'm always open to discussing new projects,
+creative ideas, business opportunities,
+or partnerships.
+</p>
+
+<div class="contact-details">
+
+<div class="info-item">
+<span>📧 Email</span>
+<a href="mailto:roytanisha825@gmail.com">
+roytanisha825@gmail.com
+</a>
+</div>
+
+<div class="info-item">
+<span>💼 LinkedIn</span>
+<a href="#" target="_blank">
+linkedin.com/in/tanisha-roy
+</a>
+</div>
+
+<div class="info-item">
+<span>💻 GitHub</span>
+<a href="#" target="_blank">
+github.com/tanisharoy222005
+</a>
+</div>
+
+<div class="info-item">
+<span>📍 Location</span>
+<p>Sikkim, India</p>
+</div>
+
+<div class="info-item">
+<span>⚡ Services</span>
+<p>
+Full Stack Development<br>
+Frontend Development<br>
+Hospitality Websites<br>
+Business Websites
+</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+
+<div class="contact-form-wrapper">
+
+<form class="contact-form">
+
+<div class="form-group">
+<label>Name</label>
+<input type="text" placeholder="John Smith">
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input type="email" placeholder="johnsmith@gmail.com">
+</div>
+
+<div class="form-group">
+<label>Service Needed</label>
+
+<select>
+<option>Select...</option>
+<option>Business Website</option>
+<option>Hospitality Website</option>
+<option>Portfolio Website</option>
+<option>Booking Platform</option>
+<option>Admin Dashboard</option>
+<option>Full Stack Application</option>
+<option>UI/UX Design</option>
+<option>SEO Optimization</option>
+</select>
+
+</div>
+
+<div class="form-group">
+<label>Project Details</label>
+
+<textarea
+rows="6"
+placeholder="Tell me about your project..."
+></textarea>
+
+</div>
+
+<button class="submit-btn">
+Send Inquiry →
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer>
+
+<div class="footer-content">
+
+<h2>
+Tanisha Roy
+</h2>
+
+<p>
+Full Stack Developer
+</p>
+
+<div class="footer-links">
+
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+
+</div>
+
+</div>
+
+<!-- Bottom Footer Note -->
+
+<div class="footer-note">
+Made with ❤️, ☕ and lots of late-night debugging.
+</div>
+
+</footer>
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   NAVBAR MORPH
+===================================== */
+
+const navbar = document.getElementById('navbar');
+
+window.addEventListener(
+'scroll',
+() => {
+
+if(window.scrollY > 120){
+navbar.classList.add('compact');
+}else{
+navbar.classList.remove('compact');
+}
+
+},
+{passive:true}
+);
+
+/* =====================================
+   REVEAL ANIMATION
+===================================== */
+
+const revealElements =
+document.querySelectorAll(
+'.about-card,.project-card,.timeline-item,.stat-card,.contact-card'
+);
+
+const observer =
+new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add('show');
+
+}
+
+});
+
+},
+
+{
+threshold:0.15
+}
+
+);
+
+revealElements.forEach(el=>{
+
+el.classList.add('hidden-reveal');
+observer.observe(el);
+
+});
+
+/* =====================================
+   PARALLAX HERO IMAGE
+===================================== */
+
+const heroImage =
+document.querySelector('.image-card');
+
+window.addEventListener('scroll',()=>{
+
+const scroll =
+window.pageYOffset;
+
+if(heroImage){
+
+heroImage.style.transform =
+`translateY(${scroll * 0.08}px)`;
+
+}
+
+},{passive:true});
+
+</script>
+
+</body>
+</html>
