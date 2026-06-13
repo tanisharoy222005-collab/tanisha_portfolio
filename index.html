@@ -1733,6 +1733,68 @@ heroImage.style.transform =
 },{passive:true});
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
+<script>
+
+emailjs.init({
+    publicKey: "IvW0dt9vEEtsLPlGz"
+});
+
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const templateParams = {
+
+        name:
+        document.getElementById("name").value,
+
+        email:
+        document.getElementById("email").value,
+
+        service:
+        document.getElementById("service").value,
+
+        message:
+        document.getElementById("message").value
+
+    };
+
+    emailjs.send(
+        "service_3y5af08",
+        "template_v3uw0nx",
+        templateParams
+    )
+
+    .then(function(){
+
+        document.getElementById("formStatus").innerHTML =
+        "✅ Thank you! Your inquiry has been sent successfully.";
+
+        document.getElementById("formStatus").style.color =
+        "#8EC3D5";
+
+        form.reset();
+
+    })
+
+    .catch(function(error){
+
+        document.getElementById("formStatus").innerHTML =
+        "❌ Failed to send inquiry. Please try again.";
+
+        document.getElementById("formStatus").style.color =
+        "#ff6b6b";
+
+        console.log(error);
+
+    });
+
+});
+
+</script>
 </body>
 </html>
